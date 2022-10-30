@@ -1,16 +1,14 @@
-document.addEventListener("DOMContentLoaded", function (event) {
-	const amenityList = [];
-	const amenityDict = {};
-	$("input:checkbox").click(function () {
-		if $(this).is(":checked")) {
+$(document).ready(start);
 
-		amenityDict[$(this).attr("data-id")] = $(this).attr("data-name");
-		amenityList = Object.keys(amenityDict);
-		const amenityDictVals = Object.values(amenityDict);
-		$("DIV.amenities h4").append(amenityDictVals);
-	} else {
-		delete amenityDict[$(this).attr("data-id")];
-	}
-		
-  })
-});
+function start () {
+  const amenityObj = {};
+  $('.amenities .popover input').change(function () {
+    if ($(this).is(':checked')) {
+      amenityObj[$(this).attr('data-name')] = $(this).attr('data-id');
+    } else if ($(this).is(':not(:checked)')) {
+      delete amenityObj[$(this).attr('data-name')];
+    }
+    const names = Object.keys(amenityObj);
+    $('.amenities h4').text(names.sort().join(', '));
+  });
+}
