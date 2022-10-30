@@ -15,7 +15,7 @@ function start () {
   });
 
   apiStatus();
-  searchPlaces();
+  getPlaces();
 }
 
 function apiStatus () {
@@ -29,7 +29,7 @@ function apiStatus () {
   });
 }
 
-function searchPlaces () {
+function getPlaces () {
   const PLACES_URL = `http://${HOST}:5001/api/v1/places_search/`;
   $.ajax({
     url: PLACES_URL,
